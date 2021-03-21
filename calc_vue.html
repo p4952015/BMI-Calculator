@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMI Vue Version</title>
+</head>
+<body>
+  <div id="app">
+    <h2>計算您的BMI</h2>
+    <br>
+    身高：<input type="text" name="height" id="heigth" placeholder="請輸入您的身高" v-model="height">公分
+    <br>
+    體重：<input type="text" name="weight" id="weight" placeholder="請輸入您的體重" v-model="weight">公斤
+    <br>
+    <input type="submit" value="計算" id="submit_btn" v-on:click="bmiCalc">
+    <br>
+    <br>
+    <h2>您的BMI值為：<p>{{ result }}</p></h2>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+          height: 0,
+          weight: 0,
+          result: "計算結果",
+        },
+        methods: {
+          bmiCalc(){
+            let h = Number(this.height)/100;
+            let w = Number(this.weight);
+            let bmi = ( w / (h*h)).toFixed(2);
+            this.result = bmi;
+          }
+        },
+      })
+  </script>
+  
+</body>
+</html>
